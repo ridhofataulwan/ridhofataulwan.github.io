@@ -319,21 +319,10 @@
     //====Hari Berhasil Di Tangkap====
 
     //====Membuat Interval Waktu====
-    const JamStart = [7 * 60 + 30, 8 * 60 + 25, 9 * 60 + 25, 10 * 60 + 15, 11 * 60 + 10, 13 * 60, 13 * 60 + 55, 15 * 60 + 30, 16 * 60 + 25, 18 * 60 + 10];
-    const JamEnd = [8 * 60 + 20, 9 * 60 + 15, 10 * 60 + 10, 11 * 60 + 5, 12 * 60, 13 * 60 + 50, 14 * 60 + 45, 16 * 60 + 20, 17 * 60 + 15, 19 * 60];
+    const JamStart = [7 * 60 + 30, 8 * 60 + 25, 9 * 60 + 25, 10 * 60 + 15, 11 * 60 + 10, 13 * 60, 13 * 60 + 55, 15 * 60 + 30, 16 * 60 + 25, 18 * 60 + 10, 19 * 60 + 30, 20 * 60 + 25];
+    const JamEnd = [8 * 60 + 20, 9 * 60 + 15, 10 * 60 + 10, 11 * 60 + 5, 12 * 60, 13 * 60 + 50, 14 * 60 + 45, 16 * 60 + 20, 17 * 60 + 15, 19 * 60, 20 * 60 + 20, 21 * 60 + 15];
     document.write("Jam Start : ", JamStart, "<br>")
     document.write("Jam End : ", JamEnd, "<br>")
-
-    //==UNUSED==
-    // var TotalStartEnd = [];
-    // for (i = 0; i <= 9; i++) {
-    //     TotalStartEnd[i] = JamStart[i] + JamEnd[i];
-    //     document.write(TotalStartEnd[i], "<br>")
-    // }
-
-    //====Mendapatkan Interval Waktu Jam Per Hari====
-
-
 
     //====Mencari Titik Sekarang pada Interval Waktu Jam Per Hari====
     var Jam = new Date().getHours();
@@ -349,7 +338,7 @@
     const Akan = [];
     const Sudah = [];
 
-    for (i = 0; i <= 9; i++) {
+    for (i = 0; i <= 11; i++) {
         if (Sekarang > JamStart[i] && Sekarang > JamEnd[i] + 5) {
             document.write("<br>Jam Ke-", i + 1, " => ");
             document.write(JamStart[i], "-", JamEnd[i]);
@@ -359,7 +348,7 @@
         }
 
     }
-    for (i = 0; i <= 9; i++) {
+    for (i = 0; i <= 11; i++) {
         if (Sekarang >= JamStart[i] && Sekarang < JamEnd[i] + 5) {
             document.write("<br>Jam Ke-", i + 1, " => ");
             document.write(JamStart[i], "-", JamEnd[i]);
@@ -367,7 +356,7 @@
             document.write("    Jam Ke-", JamKe, " Sedang Berlangsung");
         }
     }
-    for (i = 0, j = 0; i <= 9; i++) {
+    for (i = 0, j = 0; i <= 11; i++) {
         if (Sekarang < JamStart[i] && Sekarang < JamEnd[i] + 5) {
             document.write("<br>Jam Ke-", i + 1, " => ");
             document.write(JamStart[i], "-", JamEnd[i]);
@@ -382,7 +371,7 @@
     if (Sekarang < JamStart[0]) {
         JamKe = 0;
     } else if (Sekarang > JamEnd[JamEnd.length - 1]) {
-        JamKe = 11;
+        JamKe = 13;
     }
     //====Mendapatkan Class Active====
     document.write("<br>");
@@ -397,13 +386,14 @@
     document.write(Sedang);
     document.write("<br>");
     document.write(Akan);
-    document.write("<br>"); document.write("<br>");
+    document.write("<br>");
     // document.getElementById(Sedang).className = "table-warning";
     document.write("==================================");
+    document.write("<br>");
     document.write("Jam Ke-");
     document.write(JamKe);
 
-    for (i = 1; i <= 10; i++) {
+    for (i = 1; i <= 12; i++) {
         if (i < JamKe) { document.getElementById(dapatHari + "-" + i).className = "table-success"; }
         if (i > JamKe) { document.getElementById(dapatHari + "-" + i).className = "table-danger"; }
     }
